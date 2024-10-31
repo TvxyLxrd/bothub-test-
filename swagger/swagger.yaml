@@ -1,0 +1,82 @@
+openapi: 3.0.0
+info:
+  title: Text Neural Network API
+  version: 1.0.0
+paths:
+  /auth/register:
+    post:
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '201':
+          description: User registered successfully
+        '400':
+          description: Invalid input
+
+  /auth/login:
+    post:
+      summary: Log in a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: User logged in successfully
+        '401':
+          description: Invalid credentials
+
+  /billing/balance:
+    get:
+      summary: Get user balance
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: User balance retrieved successfully
+        '401':
+          description: Unauthorized
+
+  /model/generate:
+    post:
+      summary: Generate text using a neural network model
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model:
+                  type: string
+                prompt:
+                  type: string
+      responses:
+        '200':
+          description: Text generated successfully
+        '400':
+          description: Invalid input
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
