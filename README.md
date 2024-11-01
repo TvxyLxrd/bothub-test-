@@ -1,48 +1,106 @@
- 
-## Установка и запуск
+# Bothub Test
+
+## Описание
+
+Этот проект представляет собой тестовый API для Bothub. Он включает в себя основные функции для работы с API и может быть использован как базовый шаблон для дальнейшего развития.
+
+## Установка
 
 ### Предварительные требования
 
-- Node.js (v14.x или выше)
-- PostgreSQL (v12.x или выше)
+- [Node.js](https://nodejs.org/) (версия 14.x или выше)
+- [npm](https://www.npmjs.com/) (версия 6.x или выше)
 
-### Установка зависимостей
+### Шаги установки
 
 1. Клонируйте репозиторий:
-
-   ```bash
-   git clone https://github.com/TvxyLxrd/bothub-test-
-   cd my-api
+   ```sh
+   git clone https://github.com/TvxyLxrd/bothub-test-.git
    ```
 
+2. Перейдите в директорию проекта:
+```sh
+cd bothub-test-
+```
 
-2. Установите зависимости:
+3. Установите зависимости:
+```sh
+npm install
+```
 
-    ```bash
-    npm install
-    ```
+## Использование
+
+### Запуск сервера
+
+1. Запустите сервер разработки:
+```sh
+npm start
+```
+
+2. Сервер будет доступен по адресу http://localhost:3000.
 
 
-### Настройка переменных окружения
+### Примеры запросов
 
-- Создайте файл `.env` в корне проекта и добавьте следующие переменные:
+GET /api/example: Получить пример данных. 
 
-    ```bash
-    DATABASE_URL=postgres://username:password@localhost:5432/mydatabase
-    JWT_SECRET=your_jwt_secret
-    PORT=3000
-    ```
-### Запуск приложения
+```sh
+curl http://localhost:3000/api/example
+```
 
-1. Запустите PostgreSQL сервер.
+POST /api/example: Отправить пример данных.
 
-2. Запустите приложение:
+```sh
+curl -X POST http://localhost:3000/api/example -H "Content-Type: application/json" -d '{"key": "value"}'
+```
 
-    ```bash
-    npm run dev
-    ```
-## Документация API
 
-- Документация API доступна по адресу http://localhost:3000/api-docs после запуска приложения.
+## Структура проекта
 
-- Этот раздел содержит инструкции по установке зависимостей, настройке переменных окружения и запуску приложения.
+```sh
+src
+│
+├── controllers
+│   ├── authController.ts
+│   ├── billingController.ts
+│   └── modelController.ts
+│
+├── middlewares
+│   └── authMiddleware.ts
+│
+├── models
+│   ├── balanceModel.ts
+│   ├── modelModel.ts
+│   └── userModel.ts
+│
+├── routes
+│   ├── authRoutes.ts
+│   ├── billingRoutes.ts
+│   └── modelRoutes.ts
+│
+├── services
+│   ├── authService.ts
+│   ├── billingService.ts
+│   └── modelService.ts
+│
+├── utils
+│   ├── database.ts
+│   ├── sse.ts
+│   ├── app.ts
+│   └── server.ts
+│
+└── swagger
+    ├── swagger.yaml
+    ├── nodemon.json
+    ├── package-lock.json
+    ├── package.json
+    ├── README.md
+    └── tsconfig.json
+
+```
+
+## Контактная информация
+    Если у вас есть вопросы или предложения, пожалуйста, свяжитесь с нами:
+
+### Email: tvxylxrd@gmail.com
+### GitHub: TvxyLxrd
